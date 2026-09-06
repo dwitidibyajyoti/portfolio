@@ -14,7 +14,7 @@ const plans = [
     icon: Gift,
     description: "Get started with WhatsApp Status splitting at no cost.",
     features: [
-      { text: "WhatsApp Status (30-second slices)", included: true },
+      { text: "WhatsApp Status (30s & 60s slices)", included: true },
       { text: "Lossless stream copy", included: true },
       { text: "Bundled FFmpeg", included: true },
       { text: "Drag & drop + menu bar", included: true },
@@ -34,7 +34,7 @@ const plans = [
     icon: Crown,
     description: "Unlock all platforms and custom split options. Pay once, own forever.",
     features: [
-      { text: "WhatsApp Status (30s + 60s slices)", included: true },
+      { text: "WhatsApp Status (30s & 60s slices)", included: true },
       { text: "Lossless stream copy", included: true },
       { text: "Bundled FFmpeg", included: true },
       { text: "Drag & drop + menu bar", included: true },

@@ -25,9 +25,9 @@ const modes = [
     platform: "WhatsApp Status 60s",
     limit: "60-second slices",
     description: "Extended status updates with longer 60-second segments.",
-    badge: "Pro",
-    badgeColor: "bg-accent/10 text-accent border-accent/30",
-    iconColor: "text-accent",
+    badge: "Free Forever",
+    badgeColor: "bg-green-500/15 text-green-400 border-green-500/30",
+    iconColor: "text-green-400",
   },
   {
     icon: Film,

@@ -41,10 +41,11 @@ export function HeroSection() {
               <div className="text-xl sm:text-2xl lg:text-3xl font-mono text-muted mb-6 h-10">
                 <GlitchText
                   texts={[
-                    "Developer",
-                    "Creator",
-                    "Builder",
-                    "Problem Solver",
+                    "Software Engineer",
+                    "Full-Stack Developer",
+                    "Next.js & React Specialist",
+                    "Node.js & Python Builder",
+                    "Cloud & DevOps Integrator",
                   ]}
                   className="text-foreground"
                 />
@@ -53,8 +54,7 @@ export function HeroSection() {
 
             <AnimatedSection delay={0.3}>
               <p className="text-muted text-base sm:text-lg max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
-                {siteConfig.description} I build native apps and tools that
-                people love to use.
+                {siteConfig.description}
               </p>
             </AnimatedSection>
 
@@ -73,11 +73,11 @@ export function HeroSection() {
 
           {/* Right side - Terminal card */}
           <AnimatedSection delay={0.3} direction="left" className="flex-1 w-full max-w-lg">
-            <TerminalCard title="~/about-me" className="glow-green-sm">
+            <TerminalCard title="~/developer-profile" className="glow-green-sm">
               <div className="space-y-2 text-sm">
                 <p>
                   <span className="text-accent">$</span>{" "}
-                  <span className="text-muted">cat</span> about.json
+                  <span className="text-muted">cat</span> profile.json
                 </p>
                 <div className="pl-2 text-muted">
                   <p>{"{"}</p>
@@ -91,24 +91,38 @@ export function HeroSection() {
                   <p className="pl-4">
                     <span className="text-accent-cyan">&quot;role&quot;</span>:{" "}
                     <span className="text-green-400">
-                      &quot;{siteConfig.tagline}&quot;
+                      &quot;{siteConfig.role}&quot;
                     </span>
                     ,
                   </p>
                   <p className="pl-4">
-                    <span className="text-accent-cyan">&quot;skills&quot;</span>:{" "}
+                    <span className="text-accent-cyan">&quot;experience&quot;</span>:{" "}
                     <span className="text-yellow-400">
-                      [&quot;Swift&quot;, &quot;React&quot;, &quot;Node.js&quot;, &quot;TypeScript&quot;]
+                      &quot;4+ Years Full-Stack&quot;
+                    </span>
+                    ,
+                  </p>
+                  <p className="pl-4">
+                    <span className="text-accent-cyan">&quot;location&quot;</span>:{" "}
+                    <span className="text-yellow-400">
+                      &quot;{siteConfig.location}&quot;
+                    </span>
+                    ,
+                  </p>
+                  <p className="pl-4">
+                    <span className="text-accent-cyan">&quot;coreStack&quot;</span>:{" "}
+                    <span className="text-yellow-400">
+                      [&quot;Next.js&quot;, &quot;Node.js&quot;, &quot;React&quot;, &quot;Laravel&quot;, &quot;AWS&quot;, &quot;Docker&quot;]
                     </span>
                     ,
                   </p>
                   <p className="pl-4">
                     <span className="text-accent-cyan">
-                      &quot;passion&quot;
+                      &quot;focus&quot;
                     </span>
                     :{" "}
                     <span className="text-green-400">
-                      &quot;Building tools people love&quot;
+                      &quot;High-performance scalable web &amp; AI architectures&quot;
                     </span>
                   </p>
                   <p>{"}"}</p>

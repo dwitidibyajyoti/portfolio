@@ -13,9 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Developer & Creator",
+  title: "Dwitidibyajyoti Sahoo — Full-Stack Software Engineer",
   description:
-    "Personal portfolio and product showcase. Building tools that make life easier.",
+    "Portfolio of Dwitidibyajyoti Sahoo — Full-Stack Software Engineer with 4+ years of experience in React.js, Next.js, Node.js, Express.js, Laravel, GraphQL, Python, AWS, and Docker.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

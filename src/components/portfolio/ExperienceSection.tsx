@@ -1,97 +1,98 @@
 "use client";
 
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { workExperience, educationList } from "@/lib/constants";
+import { TiltCard } from "@/components/3d/TiltCard";
+import { workExperience } from "@/lib/constants";
 import {
   Briefcase,
-  GraduationCap,
   Calendar,
   MapPin,
   CheckCircle2,
-  Code2,
   ExternalLink,
-  Globe,
+  Zap,
+  Activity,
+  Sparkles,
 } from "lucide-react";
-
-function InstagramIcon({ size = 12 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-    </svg>
-  );
-}
-
-function FacebookIcon({ size = 12 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-    </svg>
-  );
-}
+import { motion } from "framer-motion";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 sm:py-32 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,255,136,0.03)_0%,transparent_60%)]" />
+    <section id="experience" className="py-24 sm:py-32 relative overflow-hidden">
+      {/* Background cyber grid & glow */}
+      <div className="absolute top-1/3 left-1/3 w-[550px] h-[550px] bg-accent/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
+        
+        {/* Section Heading */}
         <AnimatedSection>
           <div className="text-center mb-16">
-            <p className="text-accent font-mono text-sm mb-2">
-              {"// "}career &amp; education
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold font-mono">
-              Experience &amp; <span className="text-accent glow-text">Background</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono mb-3">
+              <Briefcase size={13} />
+              <span>CHRONOLOGICAL TELEMETRY</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-mono tracking-tight text-white">
+              Professional <span className="text-accent glow-text">Experience</span>
             </h2>
-            <p className="text-muted text-sm sm:text-base max-w-xl mx-auto mt-3">
-              4+ years of professional full-stack development, delivering scalable enterprise products, AI integrations, and modern cloud solutions.
+            <p className="text-muted text-sm sm:text-base max-w-xl mx-auto mt-3 font-sans">
+              4+ years of professional full-stack development, delivering scalable enterprise architectures, AI pipelines, and high-performance web systems.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Work Experience (2 Cols) */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="p-2 rounded-lg bg-accent/10 text-accent">
-                <Briefcase size={20} />
-              </div>
-              <h3 className="font-mono font-bold text-xl text-foreground">
-                Work Experience
-              </h3>
-            </div>
+        {/* 3D Interactive Timeline Container */}
+        <div className="relative border-l-2 border-accent/30 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12">
+          
+          {workExperience.map((exp, idx) => (
+            <AnimatedSection key={exp.company} delay={idx * 0.15}>
+              <div className="relative group">
+                
+                {/* Timeline Pulse Node Indicator */}
+                <div className="absolute -left-[35px] sm:-left-[51px] top-6 w-5 h-5 rounded-full bg-[#06080d] border-2 border-accent flex items-center justify-center shadow-[0_0_12px_rgba(0,255,136,0.5)] group-hover:scale-125 transition-transform duration-300">
+                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                </div>
 
-            <div className="space-y-6">
-              {workExperience.map((exp, idx) => (
-                <AnimatedSection key={exp.company} delay={idx * 0.15}>
-                  <div className="rounded-xl border border-card-border bg-card hover:border-accent/30 transition-all p-6 sm:p-7 relative group">
-                    {/* Header */}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                {/* 3D Tilt Experience Card */}
+                <TiltCard
+                  glowColor={idx === 0 ? "green" : idx === 1 ? "cyan" : "purple"}
+                  className="p-6 sm:p-8"
+                >
+                  <div className="space-y-4">
+                    
+                    {/* Role, Company, Period */}
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                       <div>
-                        <h4 className="text-lg font-bold font-mono text-foreground group-hover:text-accent transition-colors">
-                          {exp.role}
-                        </h4>
-                        {"website" in exp && exp.website ? (
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="text-lg sm:text-xl font-bold font-mono text-white group-hover:text-accent transition-colors">
+                            {exp.role}
+                          </h3>
+                          {idx === 0 && (
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-accent/15 text-accent border border-accent/30 font-semibold animate-pulse">
+                              PRESENT
+                            </span>
+                          )}
+                        </div>
+
+                        {exp.website ? (
                           <a
                             href={exp.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-cyan hover:underline group/link"
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold font-mono text-accent-cyan hover:underline group/link"
                           >
                             <span>{exp.company}</span>
-                            <ExternalLink size={12} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
+                            <ExternalLink size={13} className="opacity-80 group-hover/link:opacity-100" />
                           </a>
                         ) : (
-                          <p className="text-sm font-semibold text-accent-cyan">
+                          <span className="text-sm font-semibold font-mono text-accent-cyan">
                             {exp.company}
-                          </p>
+                          </span>
                         )}
                       </div>
+
                       <div className="flex flex-col sm:items-end gap-1 text-xs font-mono text-muted">
-                        <span className="flex items-center gap-1">
-                          <Calendar size={13} />
+                        <span className="flex items-center gap-1 text-foreground/90 font-medium">
+                          <Calendar size={13} className="text-accent" />
                           {exp.period}
                         </span>
                         <span className="flex items-center gap-1 text-muted/70">
@@ -101,134 +102,50 @@ export function ExperienceSection() {
                       </div>
                     </div>
 
-                    <p className="text-sm text-muted mb-4 leading-relaxed">
+                    {/* Executive Summary */}
+                    <p className="text-xs sm:text-sm text-muted leading-relaxed font-sans border-l-2 border-card-border pl-3">
                       {exp.description}
                     </p>
 
-                    {/* Bullet Points */}
-                    <ul className="space-y-2 mb-5">
-                      {exp.responsibilities.map((resp, rIdx) => (
-                        <li
-                          key={rIdx}
-                          className="flex items-start gap-2.5 text-xs sm:text-sm text-muted leading-relaxed"
-                        >
-                          <CheckCircle2
-                            size={15}
-                            className="text-accent flex-shrink-0 mt-0.5"
-                          />
-                          <span>{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-card-border/60">
-                      {exp.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-accent/5 text-accent border border-accent/20"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-
-          {/* Education & Overview (1 Col) */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="p-2 rounded-lg bg-accent-cyan/10 text-accent-cyan">
-                <GraduationCap size={20} />
-              </div>
-              <h3 className="font-mono font-bold text-xl text-foreground">
-                Education
-              </h3>
-            </div>
-
-            <div className="space-y-4">
-              {educationList.map((edu, idx) => (
-                <AnimatedSection key={edu.degree} delay={0.1 + idx * 0.1}>
-                  <div className="rounded-xl border border-card-border bg-card p-5 space-y-2.5 group hover:border-accent-cyan/30 transition-all">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="inline-block text-[11px] font-mono text-accent-cyan bg-accent-cyan/10 px-2 py-0.5 rounded border border-accent-cyan/20">
-                        {edu.period}
+                    {/* Bullet Achievements */}
+                    <div className="space-y-2 pt-2">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-accent-cyan flex items-center gap-1.5 font-bold">
+                        <Activity size={13} /> Verified Contributions &amp; Impact
                       </span>
-                    </div>
-
-                    <h4 className="font-mono font-bold text-sm text-foreground group-hover:text-accent-cyan transition-colors">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-xs text-muted leading-relaxed">
-                      {edu.institution}
-                    </p>
-                    <p className="text-[11px] text-muted/70 font-mono flex items-center gap-1">
-                      <MapPin size={12} />
-                      {edu.location}
-                    </p>
-
-                    {/* Institution links */}
-                    {edu.links && edu.links.length > 0 && (
-                      <div className="flex flex-wrap gap-2 pt-2 border-t border-card-border/60">
-                        {edu.links.map((link) => (
-                          <a
-                            key={link.url}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg bg-[#141414] text-muted hover:text-accent-cyan hover:bg-[#1a1a1a] border border-card-border transition-colors"
+                      <div className="space-y-2">
+                        {exp.responsibilities.map((resp, rIdx) => (
+                          <div
+                            key={rIdx}
+                            className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/90 font-mono leading-relaxed"
                           >
-                            {link.type === "instagram" ? (
-                              <InstagramIcon size={12} />
-                            ) : link.type === "facebook" ? (
-                              <FacebookIcon size={12} />
-                            ) : link.type === "map" ? (
-                              <MapPin size={12} className="text-yellow-400" />
-                            ) : (
-                              <Globe size={12} />
-                            )}
-                            <span>{link.label}</span>
-                            <ExternalLink size={10} className="text-muted/60" />
-                          </a>
+                            <CheckCircle2
+                              size={15}
+                              className="text-accent flex-shrink-0 mt-0.5"
+                            />
+                            <span>{resp}</span>
+                          </div>
                         ))}
                       </div>
-                    )}
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
+                    </div>
 
-            {/* Core Values / Engineering Strengths */}
-            <AnimatedSection delay={0.3}>
-              <div className="rounded-xl border border-card-border bg-card p-5 space-y-3 mt-6">
-                <div className="flex items-center gap-2 text-accent text-sm font-mono font-semibold">
-                  <Code2 size={16} />
-                  <span>Engineering Focus</span>
-                </div>
-                <ul className="space-y-2 text-xs text-muted leading-relaxed">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    Full Lifecycle Architecture &amp; Scalability
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    AI/NLP Integrations &amp; Speech Extraction
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    Cloud Infrastructure &amp; Containerization (AWS / Docker)
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    Clean, Maintainable &amp; Type-Safe Codebases
-                  </li>
-                </ul>
+                    {/* Tech Stack Modules */}
+                    <div className="pt-4 border-t border-card-border/60">
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="text-[10px] font-mono px-2.5 py-1 rounded-lg bg-[#11192e] text-muted border border-card-border"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </TiltCard>
               </div>
             </AnimatedSection>
-          </div>
+          ))}
         </div>
       </div>
     </section>

@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "Dwitidibyajyoti Sahoo — Full-Stack Software Engineer",
   description:
     "Portfolio of Dwitidibyajyoti Sahoo — Full-Stack Software Engineer with 4+ years of experience in React.js, Next.js, Node.js, Express.js, Laravel, GraphQL, Python, AWS, and Docker.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

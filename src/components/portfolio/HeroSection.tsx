@@ -1,147 +1,159 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { GlitchText } from "@/components/ui/GlitchText";
 import { GlowButton } from "@/components/ui/GlowButton";
-import { TerminalCard } from "@/components/ui/TerminalCard";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { siteConfig } from "@/lib/constants";
-import { ArrowDown, Code2, Sparkles } from "lucide-react";
+import {
+  Code2,
+  Sparkles,
+  ArrowDown,
+  Send,
+  Zap,
+  Layers,
+  Cloud,
+} from "lucide-react";
+import { motion } from "framer-motion";
+
+// Dynamic import for Three.js 3D Hero Scene
+const HeroScene = dynamic(
+  () => import("@/components/3d/HeroScene").then((mod) => mod.HeroScene),
+  { ssr: false }
+);
 
 export function HeroSection() {
+  const coreTech = [
+    "Next.js",
+    "React.js",
+    "TypeScript",
+    "Node.js",
+    "GraphQL",
+    "Python",
+    "AWS",
+    "Docker",
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-grid opacity-50" />
+    <section
+      id="hero"
+      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-24 pb-16"
+    >
+      {/* Super Interactive 3D Particle Mesh Background */}
+      <HeroScene />
 
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,136,0.05)_0%,transparent_70%)]" />
+      {/* Subtle Radial Ambient Fade */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#06080d_90%)] pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Left side - Text */}
-          <div className="flex-1 text-center lg:text-left">
-            <AnimatedSection delay={0}>
-              <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-sm font-mono mb-6">
-                <Sparkles size={14} />
-                Available for work
-              </p>
-            </AnimatedSection>
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center space-y-8 pointer-events-none">
+        
+        {/* Availability Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-400 text-xs font-mono backdrop-blur-xl shadow-lg pointer-events-auto"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+          </span>
+          <span>Available for Senior Roles &amp; High-Impact Projects</span>
+        </motion.div>
 
-            <AnimatedSection delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-mono mb-4 leading-tight">
-                <span className="text-muted">{">"} </span>
-                Hi, I&apos;m{" "}
-                <span className="text-accent glow-text">
-                  {siteConfig.name}
-                </span>
-              </h1>
-            </AnimatedSection>
+        {/* Name & Role Headline */}
+        <div className="space-y-3 pointer-events-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-mono tracking-tight text-white"
+          >
+            {siteConfig.name}
+          </motion.h1>
 
-            <AnimatedSection delay={0.2}>
-              <div className="text-xl sm:text-2xl lg:text-3xl font-mono text-muted mb-6 h-10">
-                <GlitchText
-                  texts={[
-                    "Software Engineer",
-                    "Full-Stack Developer",
-                    "Next.js & React Specialist",
-                    "Node.js & Python Builder",
-                    "Cloud & DevOps Integrator",
-                  ]}
-                  className="text-foreground"
-                />
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.3}>
-              <p className="text-muted text-base sm:text-lg max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
-                {siteConfig.description}
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <GlowButton href="/#projects" size="lg">
-                  <Code2 size={18} />
-                  View Projects
-                </GlowButton>
-                <GlowButton href="/#contact" variant="secondary" size="lg">
-                  Get in Touch
-                </GlowButton>
-              </div>
-            </AnimatedSection>
-          </div>
-
-          {/* Right side - Terminal card */}
-          <AnimatedSection delay={0.3} direction="left" className="flex-1 w-full max-w-lg">
-            <TerminalCard title="~/developer-profile" className="glow-green-sm">
-              <div className="space-y-2 text-sm">
-                <p>
-                  <span className="text-accent">$</span>{" "}
-                  <span className="text-muted">cat</span> profile.json
-                </p>
-                <div className="pl-2 text-muted">
-                  <p>{"{"}</p>
-                  <p className="pl-4">
-                    <span className="text-accent-cyan">&quot;name&quot;</span>:{" "}
-                    <span className="text-green-400">
-                      &quot;{siteConfig.name}&quot;
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-accent-cyan">&quot;role&quot;</span>:{" "}
-                    <span className="text-green-400">
-                      &quot;{siteConfig.role}&quot;
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-accent-cyan">&quot;experience&quot;</span>:{" "}
-                    <span className="text-yellow-400">
-                      &quot;4+ Years Full-Stack&quot;
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-accent-cyan">&quot;location&quot;</span>:{" "}
-                    <span className="text-yellow-400">
-                      &quot;{siteConfig.location}&quot;
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-accent-cyan">&quot;coreStack&quot;</span>:{" "}
-                    <span className="text-yellow-400">
-                      [&quot;Next.js&quot;, &quot;Node.js&quot;, &quot;React&quot;, &quot;Laravel&quot;, &quot;AWS&quot;, &quot;Docker&quot;]
-                    </span>
-                    ,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-accent-cyan">
-                      &quot;focus&quot;
-                    </span>
-                    :{" "}
-                    <span className="text-green-400">
-                      &quot;High-performance scalable web &amp; AI architectures&quot;
-                    </span>
-                  </p>
-                  <p>{"}"}</p>
-                </div>
-              </div>
-            </TerminalCard>
-          </AnimatedSection>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg sm:text-2xl font-mono text-muted flex items-center justify-center gap-2 h-8"
+          >
+            <span className="text-accent-cyan font-bold">&gt;</span>
+            <GlitchText
+              texts={[
+                "Senior Full Stack Developer",
+                "Next.js & React Specialist",
+                "Node.js & Python Architect",
+                "AI & Cloud Microservices Builder",
+              ]}
+              className="text-white font-semibold"
+            />
+          </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <AnimatedSection delay={0.8} className="mt-16 flex justify-center">
+        {/* Punchy Clean Bio */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-muted text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-sans pointer-events-auto"
+        >
+          {siteConfig.description}
+        </motion.p>
+
+        {/* Core Tech Stack Pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="flex flex-wrap items-center justify-center gap-2 pointer-events-auto"
+        >
+          {coreTech.map((tech) => (
+            <span
+              key={tech}
+              className="text-[11px] font-mono px-3 py-1 rounded-lg bg-[#0e1424]/80 text-muted border border-white/[0.08] backdrop-blur-md hover:border-accent/40 hover:text-white transition-colors"
+            >
+              {tech}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* Clear CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 pointer-events-auto"
+        >
+          <GlowButton href="#projects" size="lg" variant="primary">
+            <Code2 size={17} />
+            <span>View My Work</span>
+          </GlowButton>
+          <GlowButton href="#contact" variant="secondary" size="lg">
+            <Send size={15} />
+            <span>Contact Me</span>
+          </GlowButton>
+        </motion.div>
+
+        {/* Clean Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="pt-6 flex justify-center pointer-events-auto"
+        >
           <a
-            href="#projects"
-            className="flex flex-col items-center gap-2 text-muted hover:text-accent transition-colors"
+            href="#about"
+            className="group flex flex-col items-center gap-2 text-xs font-mono text-muted/80 hover:text-accent transition-colors"
+            aria-label="Scroll to explore"
           >
-            <span className="text-xs font-mono">scroll down</span>
-            <ArrowDown size={16} className="animate-bounce" />
+            <span className="text-[10px] uppercase tracking-widest text-muted/60 group-hover:text-accent transition-colors">
+              Scroll to explore
+            </span>
+            <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1 group-hover:border-accent/60 transition-colors">
+              <div className="w-1 h-2 rounded-full bg-accent animate-bounce" />
+            </div>
           </a>
-        </AnimatedSection>
+        </motion.div>
       </div>
     </section>
   );

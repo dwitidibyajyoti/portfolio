@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface GlitchTextProps {
   texts: string[];
@@ -14,9 +13,9 @@ interface GlitchTextProps {
 export function GlitchText({
   texts,
   className = "",
-  typingSpeed = 80,
-  deletingSpeed = 40,
-  pauseDuration = 2000,
+  typingSpeed = 70,
+  deletingSpeed = 35,
+  pauseDuration = 2200,
 }: GlitchTextProps) {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -26,7 +25,6 @@ export function GlitchText({
     const currentText = texts[textIndex];
 
     if (!isDeleting && charIndex === currentText.length) {
-      // Pause at end of word
       const timeout = setTimeout(() => setIsDeleting(true), pauseDuration);
       return () => clearTimeout(timeout);
     }
@@ -46,18 +44,10 @@ export function GlitchText({
   }, [charIndex, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, pauseDuration]);
 
   return (
-    <span className={className}>
-      <AnimatePresence mode="popLayout">
-        <motion.span
-          key={texts[textIndex]}
-          initial={{ opacity: 0.8 }}
-          animate={{ opacity: 1 }}
-          className="inline"
-        >
-          {texts[textIndex].slice(0, charIndex)}
-        </motion.span>
-      </AnimatePresence>
-      <span className="cursor-blink text-accent font-bold">▊</span>
+    <span className={`inline-flex items-center ${className}`}>
+      <span>{texts[textIndex].slice(0, charIndex)}</span>
+      <span className="cursor-blink text-accent font-bold ml-0.5 select-none">|</span>
     </span>
   );
 }
+

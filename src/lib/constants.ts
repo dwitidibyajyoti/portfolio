@@ -15,7 +15,7 @@ export const siteConfig = {
   url: "https://github.com/dwitidibyajyoti",
   socials: {
     github: "https://github.com/dwitidibyajyoti",
-    twitter: "https://twitter.com/dwitidibyajyoti",
+    twitter: "https://x.com/dwiti_d",
     linkedin: "https://linkedin.com/in/dwitidibyajyoti",
     email: "dwitidibyajyoti@gmail.com",
     facebook: "https://www.facebook.com/dwitidibyajyotisahoo",
@@ -345,9 +345,12 @@ export const products: Product[] = [
 ];
 
 export const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Experience", href: "/#experience" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "#hero" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Featured", href: "#featured" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
 ];

@@ -7,25 +7,29 @@ interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right";
+  direction?: "up" | "down" | "left" | "right" | "fade";
 }
 
-const directionVariants: Record<string, Variants> = {
+const variants: Record<string, Variants> = {
   up: {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   },
   down: {
-    hidden: { opacity: 0, y: -40 },
+    hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0 },
   },
   left: {
-    hidden: { opacity: 0, x: 40 },
+    hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0 },
   },
   right: {
-    hidden: { opacity: 0, x: -40 },
+    hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0 },
+  },
+  fade: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   },
 };
 
@@ -39,12 +43,18 @@ export function AnimatedSection({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-      variants={directionVariants[direction]}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{
+        duration: 0.55,
+        delay,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      }}
+      variants={variants[direction]}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
+
+

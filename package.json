@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
     "@types/three": "^0.185.4",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",

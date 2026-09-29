@@ -67,7 +67,7 @@ export const CubeScene: React.FC<CubeSceneProps> = ({
             <RubiksCube
               modelPath={modelPath}
               baseSpacing={1.38}
-              rotationSpeed={0.22}
+              rotationSpeed={(2 * Math.PI) / 60}
             />
           </Canvas>
         </Suspense>

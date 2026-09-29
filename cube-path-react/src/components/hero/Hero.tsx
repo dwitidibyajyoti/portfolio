@@ -51,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({ modelPath = '/cube.glb' }) => {
             }}
           >
             <SceneLighting />
-            <RubiksCube modelPath={modelPath} baseSpacing={1.38} rotationSpeed={0.25} />
+            <RubiksCube modelPath={modelPath} baseSpacing={1.38} rotationSpeed={(2 * Math.PI) / 60} />
           </Canvas>
         </Suspense>
       </div>

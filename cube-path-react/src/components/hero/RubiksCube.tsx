@@ -19,7 +19,7 @@ interface CubeletData {
 export const RubiksCube: React.FC<AsymmetricRubiksCubeProps> = ({
   modelPath = '/cube.glb',
   baseSpacing = 1.38,
-  rotationSpeed = 0.25,
+  rotationSpeed = (2 * Math.PI) / 60,
 }) => {
   const groupRef = useRef<THREE.Group>(null!);
   const { camera, raycaster, pointer, gl } = useThree();

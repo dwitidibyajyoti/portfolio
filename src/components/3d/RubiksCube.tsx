@@ -22,7 +22,7 @@ interface CubeletData {
 export const RubiksCube: React.FC<RubiksCubeProps> = ({
   modelPath = "/cube.glb",
   baseSpacing = 1.38,
-  rotationSpeed = 0.25,
+  rotationSpeed = (2 * Math.PI) / 60,
   position,
 }) => {
   const groupRef = useRef<THREE.Group>(null!);

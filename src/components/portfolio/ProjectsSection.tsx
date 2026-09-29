@@ -60,8 +60,8 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Background ambient elements */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none transform-gpu" />
+      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none transform-gpu" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">

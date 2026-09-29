@@ -49,7 +49,7 @@ export function EducationSection() {
   return (
     <section id="education" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Ambient background glow & grid */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-accent-cyan/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-accent-cyan/5 rounded-full blur-[130px] pointer-events-none transform-gpu" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6">

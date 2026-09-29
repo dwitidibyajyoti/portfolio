@@ -35,7 +35,7 @@ const variants: Record<string, Variants> = {
 
 export function AnimatedSection({
   children,
-  className,
+  className = "",
   delay = 0,
   direction = "up",
 }: AnimatedSectionProps) {
@@ -45,12 +45,12 @@ export function AnimatedSection({
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       transition={{
-        duration: 0.55,
+        duration: 0.5,
         delay,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       variants={variants[direction]}
-      className={className}
+      className={`transform-gpu ${className}`}
     >
       {children}
     </motion.div>

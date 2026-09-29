@@ -19,7 +19,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Background cyber grid & glow */}
-      <div className="absolute top-1/3 left-1/3 w-[550px] h-[550px] bg-accent/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/3 w-[550px] h-[550px] bg-accent/5 rounded-full blur-[140px] pointer-events-none transform-gpu" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6">

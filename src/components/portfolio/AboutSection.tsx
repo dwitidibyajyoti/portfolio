@@ -27,7 +27,7 @@ export function AboutSection() {
   return (
     <section id="about" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Background radial cyber ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-cyan/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-cyan/5 rounded-full blur-[140px] pointer-events-none transform-gpu" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">

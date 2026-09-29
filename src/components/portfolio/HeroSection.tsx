@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { GlitchText } from "@/components/ui/GlitchText";
 import { GlowButton } from "@/components/ui/GlowButton";
@@ -21,13 +22,29 @@ const CubeScene = dynamic(
 );
 
 export function HeroSection() {
+  const heroRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: "100px 0px" }
+    );
+    observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative w-full min-h-[100svh] h-[100svh] sm:h-screen sm:min-h-screen flex items-center overflow-hidden"
     >
-      {/* FULLSCREEN 3D CUBE ANIMATION - Interactive throughout the entire viewport */}
-      <CubeScene modelPath="/cube.glb" />
+      {/* FULLSCREEN 3D CUBE ANIMATION - Interactive throughout the entire viewport, paused when scrolled out of view */}
+      <CubeScene modelPath="/cube.glb" isVisible={isVisible} />
 
       {/* Radial ambient fade to seamlessly blend canvas with dark background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_50%,transparent_0%,rgba(6,8,13,0.65)_60%,#06080d_95%)] pointer-events-none" />

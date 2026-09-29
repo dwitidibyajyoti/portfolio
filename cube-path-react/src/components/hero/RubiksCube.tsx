@@ -323,15 +323,12 @@ const InteractiveCubelet: React.FC<InteractiveCubeletProps> = ({
     return clone;
   }, [templateScene]);
 
-  // Subtle highlight scale when hovered
-  const currentScale = isHovered ? scale * 1.08 : scale;
-
   return (
     <group
       ref={meshGroupRef}
       position={initialPosition}
       rotation={rotation}
-      scale={currentScale}
+      scale={scale}
       onPointerDown={(e) => onPick(e, id, meshGroupRef.current)}
       onPointerOver={(e) => {
         e.stopPropagation();

@@ -227,8 +227,6 @@ export const RubiksCube: React.FC<RubiksCubeProps> = ({
     cubeMeshGroup: null,
   });
 
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-
   // Auto-rotate the cluster continuously on its path
   useFrame((_, delta) => {
     if (groupRef.current) {
@@ -296,7 +294,7 @@ export const RubiksCube: React.FC<RubiksCubeProps> = ({
       if (dragRef.current.activeId) {
         dragRef.current.activeId = null;
         dragRef.current.cubeMeshGroup = null;
-        gl.domElement.style.cursor = hoveredId ? "grab" : "auto";
+        gl.domElement.style.cursor = "auto";
       }
     };
 
@@ -310,7 +308,7 @@ export const RubiksCube: React.FC<RubiksCubeProps> = ({
       window.removeEventListener("touchend", handleGlobalPointerUp);
       window.removeEventListener("touchcancel", handleGlobalPointerUp);
     };
-  }, [gl, hoveredId]);
+  }, [gl]);
 
   return (
     <group ref={groupRef} position={groupPos} scale={groupScale}>
@@ -322,11 +320,9 @@ export const RubiksCube: React.FC<RubiksCubeProps> = ({
           initialPosition={item.position}
           rotation={item.rotation}
           scale={item.scale}
-          isHovered={hoveredId === item.id}
           onPick={handlePointerDown}
-          onHover={(id, isHover) => {
+          onHover={(_, isHover) => {
             if (!dragRef.current.activeId) {
-              setHoveredId(isHover ? id : null);
               gl.domElement.style.cursor = isHover ? "grab" : "auto";
             }
           }}
@@ -342,7 +338,6 @@ interface InteractiveCubeletProps {
   initialPosition: THREE.Vector3;
   rotation: THREE.Euler;
   scale: number;
-  isHovered: boolean;
   onPick: (
     e: ThreeEvent<PointerEvent>,
     id: string,
@@ -357,7 +352,6 @@ const InteractiveCubelet: React.FC<InteractiveCubeletProps> = ({
   initialPosition,
   rotation,
   scale,
-  isHovered,
   onPick,
   onHover,
 }) => {
@@ -378,14 +372,12 @@ const InteractiveCubelet: React.FC<InteractiveCubeletProps> = ({
     return clone;
   }, [templateScene]);
 
-  const currentScale = isHovered ? scale * 1.08 : scale;
-
   return (
     <group
       ref={meshGroupRef}
       position={initialPosition}
       rotation={rotation}
-      scale={currentScale}
+      scale={scale}
       onPointerDown={(e) => onPick(e, id, meshGroupRef.current)}
       onPointerOver={(e) => {
         e.stopPropagation();

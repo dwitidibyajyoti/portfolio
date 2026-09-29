@@ -31,8 +31,8 @@ export function FeaturedProjectSection() {
   return (
     <section id="featured" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Ambient background glow & grid */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-accent-cyan/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[130px] pointer-events-none transform-gpu" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-accent-cyan/5 rounded-full blur-[130px] pointer-events-none transform-gpu" />
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">

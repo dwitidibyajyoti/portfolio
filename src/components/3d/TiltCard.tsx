@@ -47,12 +47,12 @@ export function TiltCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className={`group relative rounded-2xl border border-white/[0.08] bg-[#0c1220]/75 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.35)] ${borderStyles[glowColor]} ${className}`}
+      className={`group relative rounded-2xl border border-white/[0.08] bg-[#0c1220]/90 backdrop-blur-md transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1.5 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.35)] transform-gpu ${borderStyles[glowColor]} ${className}`}
     >
       {/* Subtle Interactive Spotlight Glare */}
       <div
         ref={glowRef}
-        className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-10 opacity-0"
+        className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-10 opacity-0 transform-gpu"
       />
 
       {/* Delicate Corner Accent Highlights */}
